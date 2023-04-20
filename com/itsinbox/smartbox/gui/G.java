@@ -40,7 +40,7 @@ final class G implements Runnable {
 }
 
 
-/* Location:              /home/oleg/pet_projects/ePorezi/ePorezi/test.jar!/com/itsinbox/smartbox/gui/G.class
+/* Location:              /com/itsinbox/smartbox/gui/G.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

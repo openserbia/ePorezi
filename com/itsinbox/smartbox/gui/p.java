@@ -12,7 +12,7 @@ final class p extends MouseAdapter {
 }
 
 
-/* Location:              /home/oleg/pet_projects/ePorezi/ePorezi/test.jar!/com/itsinbox/smartbox/gui/p.class
+/* Location:              /com/itsinbox/smartbox/gui/p.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

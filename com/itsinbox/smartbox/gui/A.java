@@ -371,7 +371,7 @@ public final class A extends JFrame implements e {
 }
 
 
-/* Location:              /home/oleg/pet_projects/ePorezi/ePorezi/test.jar!/com/itsinbox/smartbox/gui/A.class
+/* Location:              /com/itsinbox/smartbox/gui/A.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

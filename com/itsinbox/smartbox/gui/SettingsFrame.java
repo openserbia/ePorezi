@@ -162,7 +162,7 @@ public class SettingsFrame extends JFrame {
 }
 
 
-/* Location:              /home/oleg/pet_projects/ePorezi/ePorezi/test.jar!/com/itsinbox/smartbox/gui/SettingsFrame.class
+/* Location:              /com/itsinbox/smartbox/gui/SettingsFrame.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

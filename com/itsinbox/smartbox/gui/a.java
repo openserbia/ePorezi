@@ -78,7 +78,7 @@ public class a extends JFrame {
 }
 
 
-/* Location:              /home/oleg/pet_projects/ePorezi/ePorezi/test.jar!/com/itsinbox/smartbox/gui/a.class
+/* Location:              /com/itsinbox/smartbox/gui/a.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

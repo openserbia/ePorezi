@@ -12,7 +12,7 @@ final class E implements ActionListener {
 }
 
 
-/* Location:              /home/oleg/pet_projects/ePorezi/ePorezi/test.jar!/com/itsinbox/smartbox/gui/E.class
+/* Location:              /com/itsinbox/smartbox/gui/E.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */
