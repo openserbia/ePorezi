@@ -1,7 +1,5 @@
 package com.itsinbox.smartbox.gui;
 
-import com.itsinbox.smartbox.d.b;
-
 
 
 /* Location:              /com/itsinbox/smartbox/gui/z.class

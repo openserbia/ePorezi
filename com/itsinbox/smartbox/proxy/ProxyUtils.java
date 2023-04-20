@@ -1,4 +1,4 @@
-package com.itsinbox.smartbox.d;
+package com.itsinbox.smartbox.proxy;
 
 import com.itsinbox.smartbox.a.a;
 import java.io.File;
@@ -7,36 +7,36 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class c {
-  private static String a;
+public class ProxyUtils {
+  private static String CONFIG_FILE;
   
-  private static c b;
+  private static ProxyUtils proxyUtils;
   
-  public static void a(String paramString) {
-    a = paramString;
+  public static void init(String configPath) {
+    CONFIG_FILE = configPath;
   }
   
-  public static void a(boolean paramBoolean) {
+  public static void init(boolean paramBoolean) {
     c();
     if (paramBoolean)
-      a(new a(b.a)); 
+      init(new a(proxyUtils.CONFIG_FILE));
   }
   
   public static void b(boolean paramBoolean) {
     c();
     System.setProperty("java.net.useSystemProxies", "true");
     if (paramBoolean)
-      a(new a(b.b)); 
+      init(new a(proxyUtils.proxyUtils));
   }
   
-  public static void a(String paramString1, String paramString2, boolean paramBoolean) {
+  public static void init(String paramString1, String paramString2, boolean paramBoolean) {
     c();
     System.setProperty("http.proxyHost", paramString1);
     System.setProperty("http.proxyPort", paramString2);
     System.setProperty("https.proxyHost", paramString1);
     System.setProperty("https.proxyPort", paramString2);
     if (paramBoolean)
-      a(new a(b.c, paramString1, paramString2)); 
+      init(new a(proxyUtils.c, paramString1, paramString2));
   }
   
   public static void b(String paramString1, String paramString2, boolean paramBoolean) {
@@ -44,7 +44,7 @@ public class c {
     System.setProperty("socksProxyHost", paramString1);
     System.setProperty("socksProxyPort", paramString2);
     if (paramBoolean)
-      a(new a(b.d, paramString1, paramString2)); 
+      init(new a(proxyUtils.d, paramString1, paramString2));
   }
   
   private static void c() {
@@ -57,26 +57,26 @@ public class c {
     System.setProperty("java.net.useSystemProxies", "false");
   }
   
-  public static a a() {
-    null = System.getProperty("user.home") + File.separator + a;
+  public static a init() {
+    null = System.getProperty("user.home") + File.separator + CONFIG_FILE;
     FileInputStream fileInputStream = null;
     try {
       Properties properties = new Properties();
       fileInputStream = new FileInputStream(null);
       properties.load(fileInputStream);
-      b b = b.a(Integer.parseInt(properties.getProperty("proxyType")));
+      ProxyType ProxyType = ProxyType.a(Integer.parseInt(properties.getProperty("proxyType")));
       String str2 = properties.getProperty("proxyHost");
       String str1 = properties.getProperty("proxyPort");
-      a a = new a(b, str2, str1);
+      a a = new a(ProxyType, str2, str1);
     } catch (Exception exception) {
-      a.b("Config read error! " + exception.getMessage());
-      a a = new a(b.a);
+      CONFIG_FILE.b("Config read error! " + exception.getMessage());
+      a a = new a(proxyUtils.CONFIG_FILE);
     } finally {
       try {
         if (fileInputStream != null)
           fileInputStream.close(); 
       } catch (IOException iOException) {
-        a.b("Config read error! " + iOException.getMessage());
+        CONFIG_FILE.b("Config read error! " + iOException.getMessage());
       } 
     } 
     if (SYNTHETIC_LOCAL_VARIABLE_0.a() != null) {
@@ -84,13 +84,13 @@ public class c {
       Object object = SYNTHETIC_LOCAL_VARIABLE_0;
       switch (d.a[object.a().ordinal()]) {
         case 1:
-          a(false);
+          init(false);
           break;
         case 2:
           b(false);
           break;
         case 3:
-          a(object.b(), object.c(), false);
+          init(object.b(), object.c(), false);
           break;
         case 4:
           b(object.b(), object.c(), false);
@@ -100,8 +100,8 @@ public class c {
     return (a)SYNTHETIC_LOCAL_VARIABLE_0;
   }
   
-  private static void a(a parama) {
-    String str = System.getProperty("user.home") + File.separator + a;
+  private static void init(a parama) {
+    String str = System.getProperty("user.home") + File.separator + CONFIG_FILE;
     FileOutputStream fileOutputStream = null;
     try {
       Properties properties = new Properties();
@@ -113,21 +113,21 @@ public class c {
         properties.setProperty("proxyPort", parama.c()); 
       properties.store(fileOutputStream, (String)null);
     } catch (IOException iOException) {
-      a.b("Config save error! " + iOException.getMessage());
+      CONFIG_FILE.b("Config save error! " + iOException.getMessage());
     } finally {
       try {
         if (fileOutputStream != null)
           fileOutputStream.close(); 
       } catch (IOException iOException) {
-        a.b("Config save error! " + iOException.getMessage());
+        CONFIG_FILE.b("Config save error! " + iOException.getMessage());
       } 
     } 
   }
   
-  public static c b() {
-    if (b == null)
-      b = new c(); 
-    return b;
+  public static ProxyUtils b() {
+    if (proxyUtils == null)
+      proxyUtils = new ProxyUtils();
+    return proxyUtils;
   }
 }
 

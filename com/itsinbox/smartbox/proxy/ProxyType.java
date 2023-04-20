@@ -1,6 +1,6 @@
-package com.itsinbox.smartbox.d;
+package com.itsinbox.smartbox.proxy;
 
-public enum b {
+public enum ProxyType {
   a(0),
   b(1),
   c(2),
@@ -8,9 +8,9 @@ public enum b {
   
   private final int e;
   
-  private static final b[] f;
+  private static final ProxyType[] f;
   
-  b(int paramInt1) {
+  ProxyType(int paramInt1) {
     this.e = paramInt1;
   }
   
@@ -18,7 +18,7 @@ public enum b {
     return this.e;
   }
   
-  public static b a(int paramInt) {
+  public static ProxyType a(int paramInt) {
     return f[paramInt];
   }
   

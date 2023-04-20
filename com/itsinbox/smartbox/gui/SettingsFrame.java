@@ -1,13 +1,12 @@
 package com.itsinbox.smartbox.gui;
 
 import com.itsinbox.smartbox.SmartBox;
-import com.itsinbox.smartbox.d.a;
-import com.itsinbox.smartbox.d.b;
-import com.itsinbox.smartbox.d.c;
+import com.itsinbox.smartbox.proxy.ProxyParams;
+import com.itsinbox.smartbox.proxy.ProxyType;
+
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
@@ -23,9 +22,9 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 public class SettingsFrame extends JFrame {
-  private b a = this.b.a();
+  private ProxyType a = this.b.getProxyType();
   
-  private a b = SmartBox.a();
+  private ProxyParams b = SmartBox.a();
   
   private JRadioButton c;
   
@@ -102,8 +101,8 @@ public class SettingsFrame extends JFrame {
     setDefaultCloseOperation(1);
     setTitle("еПорези 1.3.1 - Подешавања");
     pack();
-    if ((settingsFrame = this).b != null && settingsFrame.b.a() != null) {
-      switch (z.a[settingsFrame.b.a().ordinal()]) {
+    if ((settingsFrame = this).b != null && settingsFrame.b.getProxyType() != null) {
+      switch (z.a[settingsFrame.b.getProxyType().ordinal()]) {
         case 1:
           settingsFrame.g.setSelected(true);
           settingsFrame.j.setVisible(false);
@@ -115,18 +114,18 @@ public class SettingsFrame extends JFrame {
         case 3:
           settingsFrame.c.setSelected(true);
           settingsFrame.j.setVisible(true);
-          if (settingsFrame.b.b() != null)
-            settingsFrame.i.setText(settingsFrame.b.b()); 
-          if (settingsFrame.b.c() != null)
-            settingsFrame.k.setText(settingsFrame.b.c()); 
+          if (settingsFrame.b.getProxyHost() != null)
+            settingsFrame.i.setText(settingsFrame.b.getProxyHost());
+          if (settingsFrame.b.getProxyPort() != null)
+            settingsFrame.k.setText(settingsFrame.b.getProxyPort());
           break;
         case 4:
           settingsFrame.m.setSelected(true);
           settingsFrame.j.setVisible(true);
-          if (settingsFrame.b.b() != null)
-            settingsFrame.i.setText(settingsFrame.b.b()); 
-          if (settingsFrame.b.c() != null)
-            settingsFrame.k.setText(settingsFrame.b.c()); 
+          if (settingsFrame.b.getProxyHost() != null)
+            settingsFrame.i.setText(settingsFrame.b.getProxyHost());
+          if (settingsFrame.b.getProxyPort() != null)
+            settingsFrame.k.setText(settingsFrame.b.getProxyPort());
           break;
       } 
       settingsFrame.pack();

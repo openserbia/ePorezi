@@ -1,4 +1,4 @@
-package com.itsinbox.smartbox.d;
+package com.itsinbox.smartbox.proxy;
 
 
 /* Location:              /com/itsinbox/smartbox/d/d.class

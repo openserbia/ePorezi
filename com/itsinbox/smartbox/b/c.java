@@ -1,7 +1,8 @@
 package com.itsinbox.smartbox.b;
 
 import com.itsinbox.smartbox.a.a;
-import com.itsinbox.smartbox.c.a;
+import com.itsinbox.smartbox.proxy.ProxyUtils;
+
 import java.util.concurrent.CopyOnWriteArrayList;
 import javax.smartcardio.Card;
 import javax.smartcardio.CardTerminal;
@@ -38,7 +39,7 @@ public final class c {
   
   public final void a() {
     Card card = this.a.connect("*");
-    com.itsinbox.smartbox.d.c.b();
+    ProxyUtils.b();
     card = card;
     a a = new a();
     a.b("CertBody: ANY");

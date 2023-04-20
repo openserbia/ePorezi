@@ -1,10 +1,10 @@
 package com.itsinbox.smartbox;
 
 import com.itsinbox.smartbox.a.a;
-import com.itsinbox.smartbox.d.a;
-import com.itsinbox.smartbox.d.c;
 import com.itsinbox.smartbox.gui.A;
 import com.itsinbox.smartbox.gui.d;
+
+import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -14,17 +14,17 @@ import javax.swing.UIManager;
 public class SmartBox {
   private static a a = a.d;
   
-  private static String b;
+  private static String baseUrl;
   
   private static a c;
   
   public static void main(String[] paramArrayOfString) {
-    String str = (str = System.getProperty("os.name")).toLowerCase();
-    a.b("OS info: " + str);
+    String osName = (osName = System.getProperty("os.name")).toLowerCase();
+    a.b("OS info: " + osName);
     try {
-      if (str.contains("windows")) {
+      if (osName.contains("windows")) {
         UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-      } else if (str.contains("linux")) {
+      } else if (osName.contains("linux")) {
         UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
       } else {
         UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
@@ -35,59 +35,59 @@ public class SmartBox {
     c.a("eporezi_proxy.conf");
     c = c.a();
     if (paramArrayOfString != null && paramArrayOfString.length > 0) {
-      str = paramArrayOfString[0];
+      osName = paramArrayOfString[0];
       try {
         Map<?, String> map;
-        String str1 = (map = a((str = str.substring(0, str.length() - 1)).replace("eporezi://", ""))).get("env");
-        String str2 = map.get("loginKey");
-        String str3 = map.get("xmlUrl");
-        if (str1 == null) {
+        String env = (map = a((osName = osName.substring(0, osName.length() - 1)).replace("eporezi://", ""))).get("env");
+        String loginKey = map.get("loginKey");
+        String xmlUrl = map.get("xmlUrl");
+        if (env == null) {
           a = a.d;
         } else {
-          switch (str1) {
+          switch (env) {
             case "prod":
               a = a.a;
-              b = "https://eporezi.purs.gov.rs";
+              baseUrl = "https://eporezi.purs.gov.rs";
               break;
             case "eto":
               a = a.b;
-              b = "https://test.purs.gov.rs";
+              baseUrl = "https://test.purs.gov.rs";
               break;
             case "ito":
               a = a.c;
-              b = "http://10.1.65.31";
+              baseUrl = "http://10.1.65.31";
               break;
             default:
               a = a.d;
-              b = null;
+              baseUrl = null;
               break;
           } 
         } 
         if (a == a.d) {
           JOptionPane.showMessageDialog(null, "Грешка приликом читања параметара.", "SmartBox", 0);
         } else {
-          if (str2 != null && str2.length() > 0) {
-            str1 = str2;
-            d.a(a, str1);
+          if (loginKey != null && loginKey.length() > 0) {
+            env = loginKey;
+            d.a(a, env);
           } else {
-            if (str3 != null && str3.length() > 0) {
-              str1 = map.get("reqKey");
-              String str5 = b(map.get("servletUrl"));
-              str2 = b(map.get("backUrl"));
-              String str6 = b(map.get("jmbgAuth"));
-              String str7 = b(map.get("pibAuth"));
-              String str8 = b(map.get("id"));
-              String str4 = b(map.get("itemId"));
-              str8 = str4;
-              str7 = str8;
-              str6 = str7;
-              str5 = str6;
-              str3 = str2;
-              str2 = str5;
-              str4 = str3;
-              str1 = str1;
+            if (xmlUrl != null && xmlUrl.length() > 0) {
+              env = map.get("reqKey");
+              String servletUrl = b(map.get("servletUrl"));
+              loginKey = b(map.get("backUrl"));
+              String jmbgAuth = b(map.get("jmbgAuth"));
+              String pibAuth = b(map.get("pibAuth"));
+              String id = b(map.get("id"));
+              String itemId = b(map.get("itemId"));
+              id = itemId;
+              pibAuth = id;
+              jmbgAuth = pibAuth;
+              servletUrl = jmbgAuth;
+              xmlUrl = loginKey;
+              loginKey = servletUrl;
+              itemId = xmlUrl;
+              env = env;
               A a1;
-              (a1 = new A(a, b, str1, str4, str2, str3, str5, str6, str7, str8)).setVisible(true);
+              (a1 = new A(a, baseUrl, env, itemId, loginKey, xmlUrl, servletUrl, jmbgAuth, pibAuth, id)).setVisible(true);
               a1.b();
             } 
             return;
@@ -106,7 +106,7 @@ public class SmartBox {
     } 
   }
   
-  private static Map a(String paramString) {
+  private static Map a(String paramString) throws UnsupportedEncodingException {
     LinkedHashMap<Object, Object> linkedHashMap = new LinkedHashMap<>();
     String[] arrayOfString;
     int i = (arrayOfString = arrayOfString = paramString.split("&")).length;
