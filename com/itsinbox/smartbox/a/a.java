@@ -1,5 +1,7 @@
 package com.itsinbox.smartbox.a;
 
+import com.itsinbox.smartbox.Logger.FileLogger;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -37,7 +39,7 @@ public class a {
   
   private Date d;
   
-  private static com.itsinbox.smartbox.e.a e;
+  private static FileLogger e;
   
   public static List a(KeyStore paramKeyStore) {
     ArrayList<String> arrayList = new ArrayList();
@@ -361,8 +363,8 @@ public class a {
   public static void b(String paramString) {
     System.out.println(paramString);
     if (e == null)
-      e = new com.itsinbox.smartbox.e.a(); 
-    e.a(paramString);
+      e = new FileLogger();
+    e.writeToLog(paramString);
   }
 }
 
