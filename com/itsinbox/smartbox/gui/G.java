@@ -1,6 +1,7 @@
 package com.itsinbox.smartbox.gui;
 
-import com.itsinbox.smartbox.b.a;
+import com.itsinbox.smartbox.logic.SigningLogic;
+
 import java.security.KeyStore;
 
 final class G implements Runnable {
@@ -10,17 +11,17 @@ final class G implements Runnable {
     KeyStore keyStore;
     if ((keyStore = A.a(this.a).c()) != null) {
       A.b(this.a).setText("Потписивање пријаве у току. Молимо за стрпљење.");
-      a a;
-      (a = new a()).a(A.c(this.a));
-      a.b(A.d(this.a));
-      a.a(A.a(this.a));
-      a.c(A.e(this.a));
-      if (a.a(keyStore)) {
+      SigningLogic SigningLogic;
+      (SigningLogic = new SigningLogic()).a(A.c(this.a));
+      SigningLogic.b(A.d(this.a));
+      SigningLogic.a(A.a(this.a));
+      SigningLogic.c(A.e(this.a));
+      if (SigningLogic.a(keyStore)) {
         A.b(this.a).setText("Пријава успешно потписана. Шаљем...");
         try {
           String str;
-          if ((str = a.a()) != null) {
-            A.a(this.a, a.a());
+          if ((str = SigningLogic.a()) != null) {
+            A.a(this.a, SigningLogic.a());
             A.b(this.a).setText("Потписана пријава је послата.");
             A.a(this.a).b();
             System.exit(0);

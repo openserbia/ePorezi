@@ -1,9 +1,9 @@
-package com.itsinbox.smartbox.b;
+package com.itsinbox.smartbox.logic;
 
-import com.itsinbox.smartbox.c.c;
+import com.itsinbox.smartbox.model.SmartCard;
 
 public interface e {
-  void a(c paramc);
+  void a(SmartCard paramc);
   
   void a();
 }

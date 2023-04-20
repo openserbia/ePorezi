@@ -1,12 +1,10 @@
 package com.itsinbox.smartbox.gui;
 
 import com.itsinbox.smartbox.a;
-import com.itsinbox.smartbox.a.a;
-import com.itsinbox.smartbox.b.a;
-import com.itsinbox.smartbox.b.c;
-import com.itsinbox.smartbox.b.e;
-import com.itsinbox.smartbox.c.b;
-import com.itsinbox.smartbox.c.c;
+import com.itsinbox.smartbox.logic.c;
+import com.itsinbox.smartbox.logic.e;
+import com.itsinbox.smartbox.model.b;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -14,13 +12,10 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.math.BigInteger;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateExpiredException;
 import java.security.cert.CertificateNotYetValidException;
@@ -50,7 +45,6 @@ import javax.swing.JTable;
 import javax.swing.LayoutStyle;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.Border;
-import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 

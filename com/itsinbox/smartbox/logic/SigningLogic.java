@@ -1,6 +1,6 @@
-package com.itsinbox.smartbox.b;
+package com.itsinbox.smartbox.logic;
 
-import com.itsinbox.smartbox.c.c;
+import com.itsinbox.smartbox.model.SmartCard;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
@@ -43,10 +43,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
-public final class a {
-  private String a;
+public final class SigningLogic {
+  private String chosenAlias;
   
-  private c b = null;
+  private SmartCard card = null;
   
   private String c;
   
@@ -59,15 +59,15 @@ public final class a {
   private String g;
   
   public final void a(String paramString) {
-    this.a = paramString;
+    this.chosenAlias = paramString;
   }
   
   public final void b(String paramString) {
     this.c = paramString;
   }
   
-  public final void a(c paramc) {
-    this.b = paramc;
+  public final void a(SmartCard paramc) {
+    this.card = paramc;
   }
   
   public final void c(String paramString) {
@@ -88,8 +88,8 @@ public final class a {
   
   private b c(KeyStore paramKeyStore) {
     String str;
-    if ((str = this.a) == null)
-      str = com.itsinbox.smartbox.a.a.b(paramKeyStore); 
+    if ((str = this.chosenAlias) == null)
+      str = com.itsinbox.smartbox.a.SmartCardLogic.b(paramKeyStore);
     f(str);
     try {
       if (str != null) {
@@ -101,25 +101,25 @@ public final class a {
         for (byte b = 0; b < arrayOfCertificate.length; b++) {
           X509Certificate x509Certificate;
           boolean[] arrayOfBoolean = (x509Certificate = (X509Certificate)arrayOfCertificate[b]).getKeyUsage();
-          com.itsinbox.smartbox.a.a.b("Chain member: " + b);
+          com.itsinbox.smartbox.a.SmartCardLogic.b("Chain member: " + b);
           if (arrayOfBoolean[0])
-            com.itsinbox.smartbox.a.a.b("digitalSignature"); 
+            com.itsinbox.smartbox.a.SmartCardLogic.b("digitalSignature");
           if (arrayOfBoolean[1])
-            com.itsinbox.smartbox.a.a.b("nonRepudiation"); 
+            com.itsinbox.smartbox.a.SmartCardLogic.b("nonRepudiation");
           if (arrayOfBoolean[2])
-            com.itsinbox.smartbox.a.a.b("keyEncypherment"); 
+            com.itsinbox.smartbox.a.SmartCardLogic.b("keyEncypherment");
           if (arrayOfBoolean[3])
-            com.itsinbox.smartbox.a.a.b("dataEncypherment"); 
+            com.itsinbox.smartbox.a.SmartCardLogic.b("dataEncypherment");
           if (arrayOfBoolean[4])
-            com.itsinbox.smartbox.a.a.b("keyAgreement"); 
+            com.itsinbox.smartbox.a.SmartCardLogic.b("keyAgreement");
           if (arrayOfBoolean[5])
-            com.itsinbox.smartbox.a.a.b("keyCertSign"); 
+            com.itsinbox.smartbox.a.SmartCardLogic.b("keyCertSign");
           if (arrayOfBoolean[6])
-            com.itsinbox.smartbox.a.a.b("cRLSign"); 
+            com.itsinbox.smartbox.a.SmartCardLogic.b("cRLSign");
           if (arrayOfBoolean[7])
-            com.itsinbox.smartbox.a.a.b("encipherOnly"); 
+            com.itsinbox.smartbox.a.SmartCardLogic.b("encipherOnly");
           if (arrayOfBoolean[8])
-            com.itsinbox.smartbox.a.a.b("decipherOnly"); 
+            com.itsinbox.smartbox.a.SmartCardLogic.b("decipherOnly");
           if (arrayOfBoolean[0] || arrayOfBoolean[1])
             b1.c = x509Certificate; 
         } 
@@ -127,7 +127,7 @@ public final class a {
       } 
       return null;
     } catch (KeyStoreException|NoSuchAlgorithmException|java.security.UnrecoverableKeyException keyStoreException) {
-      com.itsinbox.smartbox.a.a.b("Error while getting key and certificate chain: " + keyStoreException.getMessage());
+      com.itsinbox.smartbox.a.SmartCardLogic.b("Error while getting key and certificate chain: " + keyStoreException.getMessage());
       return null;
     } 
   }
@@ -145,14 +145,14 @@ public final class a {
     try {
       documentBuilder = documentBuilderFactory.newDocumentBuilder();
     } catch (ParserConfigurationException parserConfigurationException) {
-      com.itsinbox.smartbox.a.a.b("Error while building document for signing: " + parserConfigurationException.getMessage());
+      com.itsinbox.smartbox.a.SmartCardLogic.b("Error while building document for signing: " + parserConfigurationException.getMessage());
       return false;
     } 
     try {
-      a a1;
-      document = documentBuilder.parse((new URL((a1 = this).c + "?jmbg=" + this.d)).openStream());
+      SigningLogic signingLogic1;
+      document = documentBuilder.parse((new URL((signingLogic1 = this).c + "?jmbg=" + this.d)).openStream());
     } catch (SAXException|java.io.IOException sAXException) {
-      com.itsinbox.smartbox.a.a.b("Error while parsing document for signing: " + sAXException.getMessage());
+      com.itsinbox.smartbox.a.SmartCardLogic.b("Error while parsing document for signing: " + sAXException.getMessage());
       return false;
     } 
     Element element1;
@@ -189,19 +189,19 @@ public final class a {
         String str1 = stringWriter.toString();
         try {
           str1 = URLEncoder.encode(str1, "UTF-8");
-          a a2;
-          (a2 = this).e = str1;
+          SigningLogic signingLogic2;
+          (signingLogic2 = this).e = str1;
         } catch (UnsupportedEncodingException unsupportedEncodingException) {
-          com.itsinbox.smartbox.a.a.b("Error while writing signature results: " + unsupportedEncodingException.getMessage());
+          com.itsinbox.smartbox.a.SmartCardLogic.b("Error while writing signature results: " + unsupportedEncodingException.getMessage());
         } 
-        a a1;
-        com.itsinbox.smartbox.a.a.b("SIGNATURE: " + (a1 = this).e);
+        SigningLogic signingLogic1;
+        com.itsinbox.smartbox.a.SmartCardLogic.b("SIGNATURE: " + (signingLogic1 = this).e);
       } catch (TransformerException transformerException) {
-        com.itsinbox.smartbox.a.a.b("Error while writing signature results: " + transformerException.getMessage());
+        com.itsinbox.smartbox.a.SmartCardLogic.b("Error while writing signature results: " + transformerException.getMessage());
         return false;
       } 
     } catch (NoSuchAlgorithmException|java.security.InvalidAlgorithmParameterException|java.security.KeyException|javax.xml.crypto.MarshalException|javax.xml.crypto.dsig.XMLSignatureException noSuchAlgorithmException) {
-      com.itsinbox.smartbox.a.a.b("Error while signing XML: " + noSuchAlgorithmException.getMessage());
+      com.itsinbox.smartbox.a.SmartCardLogic.b("Error while signing XML: " + noSuchAlgorithmException.getMessage());
       return false;
     } 
     return true;
@@ -210,11 +210,11 @@ public final class a {
   private String f(String paramString) {
     StringBuilder stringBuilder = new StringBuilder();
     try {
-      a a1;
-      if ((a1 = this).b != null) {
+      SigningLogic signingLogic1;
+      if ((signingLogic1 = this).card != null) {
         StringBuilder stringBuilder1 = new StringBuilder();
         Certificate[] arrayOfCertificate;
-        if ((arrayOfCertificate = (a1 = this).b.c().getCertificateChain(paramString)).length > 0) {
+        if ((arrayOfCertificate = (signingLogic1 = this).card.getKeyStore().getCertificateChain(paramString)).length > 0) {
           X509Certificate x509Certificate;
           String str = (x509Certificate = (X509Certificate)arrayOfCertificate[0]).getSubjectX500Principal().toString();
           try {
@@ -226,15 +226,15 @@ public final class a {
               if ((rdn = iterator.next()).getType().equals("CN") && (str1 = rdn.getValue().toString()) != null) {
                 String[] arrayOfString = str1.split(" ");
                 String str2 = arrayOfString[0];
-                (a1 = this).f = str2;
+                (signingLogic1 = this).f = str2;
                 if (arrayOfString.length > 1) {
                   str2 = arrayOfString[1];
-                  (a1 = this).g = str2;
+                  (signingLogic1 = this).g = str2;
                 } 
               } 
             } 
           } catch (InvalidNameException invalidNameException) {
-            com.itsinbox.smartbox.a.a.b("Error while getting certificate info: " + invalidNameException);
+            com.itsinbox.smartbox.a.SmartCardLogic.b("Error while getting certificate info: " + invalidNameException);
           } 
           stringBuilder1.append(this.f).append(" ").append(this.g).append(" [").append(this.d).append("]");
           stringBuilder.append(stringBuilder1.toString());
@@ -243,7 +243,7 @@ public final class a {
         stringBuilder.append("Not a key entry!");
       } 
     } catch (KeyStoreException keyStoreException) {
-      com.itsinbox.smartbox.a.a.b("Error while getting certificate info: " + keyStoreException);
+      com.itsinbox.smartbox.a.SmartCardLogic.b("Error while getting certificate info: " + keyStoreException);
     } 
     return stringBuilder.toString();
   }
@@ -261,15 +261,15 @@ public final class a {
     try {
       documentBuilder = documentBuilderFactory.newDocumentBuilder();
     } catch (ParserConfigurationException parserConfigurationException) {
-      com.itsinbox.smartbox.a.a.b("Error while building document for signing: " + parserConfigurationException.getMessage());
+      com.itsinbox.smartbox.a.SmartCardLogic.b("Error while building document for signing: " + parserConfigurationException.getMessage());
       return false;
     } 
     try {
-      a a1;
-      String str1 = (a1 = this).c + "?jmbg=" + this.d;
+      SigningLogic signingLogic1;
+      String str1 = (signingLogic1 = this).c + "?jmbg=" + this.d;
       document = documentBuilder.parse((new URL(str1)).openStream());
     } catch (SAXException sAXException) {
-      com.itsinbox.smartbox.a.a.b("Error while parsing document for signing: " + sAXException.getMessage());
+      com.itsinbox.smartbox.a.SmartCardLogic.b("Error while parsing document for signing: " + sAXException.getMessage());
       return false;
     } 
     Element element1;
@@ -306,19 +306,19 @@ public final class a {
         String str1 = stringWriter.toString();
         try {
           str1 = URLEncoder.encode(str1, "UTF-8");
-          a a2;
-          (a2 = this).e = str1;
+          SigningLogic signingLogic2;
+          (signingLogic2 = this).e = str1;
         } catch (UnsupportedEncodingException unsupportedEncodingException) {
-          com.itsinbox.smartbox.a.a.b("Error while writing signature results: " + unsupportedEncodingException);
+          com.itsinbox.smartbox.a.SmartCardLogic.b("Error while writing signature results: " + unsupportedEncodingException);
         } 
-        a a1;
-        com.itsinbox.smartbox.a.a.b("SIGNATURE: " + (a1 = this).e);
+        SigningLogic signingLogic1;
+        com.itsinbox.smartbox.a.SmartCardLogic.b("SIGNATURE: " + (signingLogic1 = this).e);
       } catch (TransformerException transformerException) {
-        com.itsinbox.smartbox.a.a.b("Error while writing signature results: " + transformerException.getMessage());
+        com.itsinbox.smartbox.a.SmartCardLogic.b("Error while writing signature results: " + transformerException.getMessage());
         return false;
       } 
     } catch (NoSuchAlgorithmException|java.security.InvalidAlgorithmParameterException|java.security.KeyException|javax.xml.crypto.MarshalException|javax.xml.crypto.dsig.XMLSignatureException noSuchAlgorithmException) {
-      com.itsinbox.smartbox.a.a.b("Error while signing XML for login: " + noSuchAlgorithmException);
+      com.itsinbox.smartbox.a.SmartCardLogic.b("Error while signing XML for login: " + noSuchAlgorithmException);
       return false;
     } 
     return true;

@@ -1,7 +1,7 @@
 package com.itsinbox.smartbox.gui;
 
-import com.itsinbox.smartbox.a.a;
-import com.itsinbox.smartbox.c.b;
+import SmartCardLogic;
+import com.itsinbox.smartbox.model.b;
 import java.security.KeyStore;
 import java.util.List;
 
@@ -15,17 +15,17 @@ final class I extends Thread {
       return;
     } 
     List<?> list2;
-    if ((list2 = a.a(keyStore)).isEmpty()) {
+    if ((list2 = SmartCardLogic.a(keyStore)).isEmpty()) {
       A.b(this.a).setText("Дошло је до грешке приликом читања сертификата. Молим, покушајте поново.");
       return;
     } 
     List<?> list1;
-    if (!(list1 = a.a(keyStore, list2)).isEmpty()) {
+    if (!(list1 = SmartCardLogic.a(keyStore, list2)).isEmpty()) {
       if (list1.size() > 1) {
         b b;
         (b = (b)A.j(this.a).getModel()).a(list1);
       } else {
-        A.b(this.a, ((a)list1.get(0)).a());
+        A.b(this.a, ((SmartCardLogic)list1.get(0)).SmartCardLogic());
       } 
     } else {
       A.b(this.a).setText("Дошло је до грешке приликом читања сертификата. Молим, покушајте поново.");

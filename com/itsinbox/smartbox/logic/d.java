@@ -1,11 +1,11 @@
-package com.itsinbox.smartbox.b;
+package com.itsinbox.smartbox.logic;
 
-import com.itsinbox.smartbox.c.c;
+import com.itsinbox.smartbox.model.SmartCard;
 import javax.smartcardio.CardException;
 import javax.smartcardio.CardTerminal;
 
 final class d implements Runnable {
-  d(c paramc, CardTerminal paramCardTerminal) {}
+  d(SmartCard paramc, CardTerminal paramCardTerminal) {}
   
   public final void run() {
     try {
@@ -13,28 +13,28 @@ final class d implements Runnable {
       while (true) {
         boolean bool = true;
         try {
-          if (c.a(this.b) == null) {
+          if (SmartCard.a(this.b) == null) {
             this.a.waitForCardPresent(c1);
           } else {
             this.a.waitForCardAbsent(c1);
           } 
-          if (c.a(this.b) == null && this.a.isCardPresent()) {
+          if (SmartCard.a(this.b) == null && this.a.isCardPresent()) {
             this.b.a();
-          } else if (c.a(this.b) != null && !this.a.isCardPresent()) {
+          } else if (SmartCard.a(this.b) != null && !this.a.isCardPresent()) {
             this.b.b();
           } else {
             c1 = 'ஸ';
             bool = false;
           } 
         } catch (CardException cardException) {
-          c.a(this.b, (c)null);
+          SmartCard.a(this.b, (SmartCard)null);
           if (this.a.isCardPresent())
             this.b.a(); 
         } 
         if (bool) {
           d d1;
-          for (e e : c.b((d1 = this).b))
-            c.a(d1.b, e, false); 
+          for (e e : SmartCard.b((d1 = this).b))
+            SmartCard.a(d1.b, e, false);
         } 
       } 
     } catch (CardException cardException) {

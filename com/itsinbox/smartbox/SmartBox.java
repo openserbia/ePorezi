@@ -1,6 +1,6 @@
 package com.itsinbox.smartbox;
 
-import com.itsinbox.smartbox.a.a;
+import com.itsinbox.smartbox.a.SmartCardLogic;
 import com.itsinbox.smartbox.gui.A;
 import com.itsinbox.smartbox.gui.d;
 
@@ -12,15 +12,15 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class SmartBox {
-  private static a a = a.d;
+  private static SmartCardLogic SmartCardLogic = SmartCardLogic.d;
   
   private static String baseUrl;
   
-  private static a c;
+  private static SmartCardLogic c;
   
   public static void main(String[] paramArrayOfString) {
     String osName = (osName = System.getProperty("os.name")).toLowerCase();
-    a.b("OS info: " + osName);
+    SmartCardLogic.b("OS info: " + osName);
     try {
       if (osName.contains("windows")) {
         UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -30,7 +30,7 @@ public class SmartBox {
         UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
       } 
     } catch (ClassNotFoundException|InstantiationException|IllegalAccessException|javax.swing.UnsupportedLookAndFeelException classNotFoundException) {
-      a.b("Error while setting window theme: " + classNotFoundException.getMessage());
+      SmartCardLogic.b("Error while setting window theme: " + classNotFoundException.getMessage());
     } 
     c.a("eporezi_proxy.conf");
     c = c.a();
@@ -42,33 +42,33 @@ public class SmartBox {
         String loginKey = map.get("loginKey");
         String xmlUrl = map.get("xmlUrl");
         if (env == null) {
-          a = a.d;
+          SmartCardLogic = SmartCardLogic.d;
         } else {
           switch (env) {
             case "prod":
-              a = a.a;
+              SmartCardLogic = SmartCardLogic.a;
               baseUrl = "https://eporezi.purs.gov.rs";
               break;
             case "eto":
-              a = a.b;
+              SmartCardLogic = SmartCardLogic.b;
               baseUrl = "https://test.purs.gov.rs";
               break;
             case "ito":
-              a = a.c;
+              SmartCardLogic = SmartCardLogic.c;
               baseUrl = "http://10.1.65.31";
               break;
             default:
-              a = a.d;
+              SmartCardLogic = SmartCardLogic.d;
               baseUrl = null;
               break;
           } 
         } 
-        if (a == a.d) {
+        if (SmartCardLogic == SmartCardLogic.d) {
           JOptionPane.showMessageDialog(null, "Грешка приликом читања параметара.", "SmartBox", 0);
         } else {
           if (loginKey != null && loginKey.length() > 0) {
             env = loginKey;
-            d.a(a, env);
+            d.a(SmartCardLogic, env);
           } else {
             if (xmlUrl != null && xmlUrl.length() > 0) {
               env = map.get("reqKey");
@@ -87,7 +87,7 @@ public class SmartBox {
               itemId = xmlUrl;
               env = env;
               A a1;
-              (a1 = new A(a, baseUrl, env, itemId, loginKey, xmlUrl, servletUrl, jmbgAuth, pibAuth, id)).setVisible(true);
+              (a1 = new A(SmartCardLogic, baseUrl, env, itemId, loginKey, xmlUrl, servletUrl, jmbgAuth, pibAuth, id)).setVisible(true);
               a1.b();
             } 
             return;
@@ -95,14 +95,14 @@ public class SmartBox {
           return;
         } 
       } catch (Exception exception) {
-        a.b("Error while processing URL: " + exception.getMessage());
+        SmartCardLogic.b("Error while processing URL: " + exception.getMessage());
         paramArrayOfString = null;
-        d.a(a, (String)paramArrayOfString);
+        d.a(SmartCardLogic, (String)paramArrayOfString);
         return;
       } 
     } else {
       paramArrayOfString = null;
-      d.a(a, (String)paramArrayOfString);
+      d.a(SmartCardLogic, (String)paramArrayOfString);
     } 
   }
   
@@ -126,11 +126,11 @@ public class SmartBox {
     } 
   }
   
-  public static a a() {
+  public static SmartCardLogic a() {
     return c;
   }
   
-  public static void a(a parama) {
+  public static void a(SmartCardLogic parama) {
     c = parama;
   }
 }

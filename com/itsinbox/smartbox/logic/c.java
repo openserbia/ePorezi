@@ -1,6 +1,7 @@
-package com.itsinbox.smartbox.b;
+package com.itsinbox.smartbox.logic;
 
-import com.itsinbox.smartbox.a.a;
+import com.itsinbox.smartbox.a.SmartCardLogic;
+import com.itsinbox.smartbox.model.SmartCard;
 import com.itsinbox.smartbox.proxy.ProxyUtils;
 
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -10,7 +11,7 @@ import javax.smartcardio.CardTerminal;
 public final class c {
   private final CardTerminal a;
   
-  private volatile com.itsinbox.smartbox.c.c b;
+  private volatile SmartCard b;
   
   private CopyOnWriteArrayList c;
   
@@ -41,11 +42,11 @@ public final class c {
     Card card = this.a.connect("*");
     ProxyUtils.b();
     card = card;
-    a a = new a();
-    a.b("CertBody: ANY");
-    a.a(card);
+    SmartCardLogic SmartCardLogic = new SmartCardLogic();
+    SmartCardLogic.b("CertBody: ANY");
+    SmartCardLogic.a(card);
     card.getBasicChannel();
-    this.b = (com.itsinbox.smartbox.c.c)a;
+    this.b = (SmartCard) SmartCardLogic;
   }
   
   public final void b() {

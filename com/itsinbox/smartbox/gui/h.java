@@ -1,6 +1,6 @@
 package com.itsinbox.smartbox.gui;
 
-import com.itsinbox.smartbox.a.a;
+import SmartCardLogic;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -18,8 +18,8 @@ final class h extends Thread {
       (properties = new Properties()).load(inputStreamReader);
       inputStreamReader.close();
       String str = properties.getProperty("version");
-      a.b("Server version: " + String.valueOf(str));
-      a.b("Application version: " + String.valueOf("1.3.1"));
+      SmartCardLogic.b("Server version: " + String.valueOf(str));
+      SmartCardLogic.b("Application version: " + String.valueOf("1.3.1"));
       if (!str.equals("1.3.1")) {
         d.b(this.a, str);
         d.r(this.a).setVisible(true);
@@ -27,7 +27,7 @@ final class h extends Thread {
       } 
       return;
     } catch (Exception exception) {
-      a.b("Error while checking for updates: " + exception.getMessage());
+      SmartCardLogic.b("Error while checking for updates: " + exception.getMessage());
       return;
     } 
   }

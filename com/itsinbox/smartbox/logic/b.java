@@ -1,4 +1,4 @@
-package com.itsinbox.smartbox.b;
+package com.itsinbox.smartbox.logic;
 
 import java.security.PrivateKey;
 import java.security.cert.Certificate;

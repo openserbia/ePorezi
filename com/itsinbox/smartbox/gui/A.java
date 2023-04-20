@@ -1,22 +1,19 @@
 package com.itsinbox.smartbox.gui;
 
 import com.itsinbox.smartbox.a;
-import com.itsinbox.smartbox.a.a;
-import com.itsinbox.smartbox.b.c;
-import com.itsinbox.smartbox.b.e;
-import com.itsinbox.smartbox.c.b;
-import com.itsinbox.smartbox.c.c;
+import com.itsinbox.smartbox.logic.c;
+import com.itsinbox.smartbox.logic.e;
+import com.itsinbox.smartbox.model.b;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.security.KeyStore;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Timer;
 import java.util.logging.Level;
@@ -36,7 +33,6 @@ import javax.swing.JTable;
 import javax.swing.LayoutStyle;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.Border;
-import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 

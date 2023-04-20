@@ -1,6 +1,6 @@
-package com.itsinbox.smartbox.c;
+package com.itsinbox.smartbox.model;
 
-import com.itsinbox.smartbox.a.a;
+import com.itsinbox.smartbox.a.SmartCardLogic;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -25,13 +25,13 @@ public final class b extends AbstractTableModel {
   public final Object getValueAt(int paramInt1, int paramInt2) {
     switch (paramInt2) {
       case 0:
-        return ((a)this.a.get(paramInt1)).a();
+        return ((SmartCardLogic)this.a.get(paramInt1)).SmartCardLogic();
       case 1:
-        return ((a)this.a.get(paramInt1)).b();
+        return ((SmartCardLogic)this.a.get(paramInt1)).b();
       case 2:
-        return ((a)this.a.get(paramInt1)).c();
+        return ((SmartCardLogic)this.a.get(paramInt1)).c();
       case 3:
-        return ((a)this.a.get(paramInt1)).d();
+        return ((SmartCardLogic)this.a.get(paramInt1)).d();
     } 
     return "n/a";
   }

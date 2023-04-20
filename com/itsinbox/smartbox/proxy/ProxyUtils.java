@@ -1,6 +1,6 @@
 package com.itsinbox.smartbox.proxy;
 
-import com.itsinbox.smartbox.a.a;
+import com.itsinbox.smartbox.a.SmartCardLogic;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -19,14 +19,14 @@ public class ProxyUtils {
   public static void init(boolean paramBoolean) {
     c();
     if (paramBoolean)
-      init(new a(proxyUtils.CONFIG_FILE));
+      init(new SmartCardLogic(proxyUtils.CONFIG_FILE));
   }
   
   public static void b(boolean paramBoolean) {
     c();
     System.setProperty("java.net.useSystemProxies", "true");
     if (paramBoolean)
-      init(new a(proxyUtils.proxyUtils));
+      init(new SmartCardLogic(proxyUtils.proxyUtils));
   }
   
   public static void init(String paramString1, String paramString2, boolean paramBoolean) {
@@ -36,7 +36,7 @@ public class ProxyUtils {
     System.setProperty("https.proxyHost", paramString1);
     System.setProperty("https.proxyPort", paramString2);
     if (paramBoolean)
-      init(new a(proxyUtils.c, paramString1, paramString2));
+      init(new SmartCardLogic(proxyUtils.c, paramString1, paramString2));
   }
   
   public static void b(String paramString1, String paramString2, boolean paramBoolean) {
@@ -44,7 +44,7 @@ public class ProxyUtils {
     System.setProperty("socksProxyHost", paramString1);
     System.setProperty("socksProxyPort", paramString2);
     if (paramBoolean)
-      init(new a(proxyUtils.d, paramString1, paramString2));
+      init(new SmartCardLogic(proxyUtils.d, paramString1, paramString2));
   }
   
   private static void c() {
@@ -57,7 +57,7 @@ public class ProxyUtils {
     System.setProperty("java.net.useSystemProxies", "false");
   }
   
-  public static a init() {
+  public static SmartCardLogic init() {
     null = System.getProperty("user.home") + File.separator + CONFIG_FILE;
     FileInputStream fileInputStream = null;
     try {
@@ -67,10 +67,10 @@ public class ProxyUtils {
       ProxyType ProxyType = ProxyType.a(Integer.parseInt(properties.getProperty("proxyType")));
       String str2 = properties.getProperty("proxyHost");
       String str1 = properties.getProperty("proxyPort");
-      a a = new a(ProxyType, str2, str1);
+      SmartCardLogic SmartCardLogic = new SmartCardLogic(ProxyType, str2, str1);
     } catch (Exception exception) {
       CONFIG_FILE.b("Config read error! " + exception.getMessage());
-      a a = new a(proxyUtils.CONFIG_FILE);
+      SmartCardLogic SmartCardLogic = new SmartCardLogic(proxyUtils.CONFIG_FILE);
     } finally {
       try {
         if (fileInputStream != null)
@@ -97,16 +97,16 @@ public class ProxyUtils {
           break;
       } 
     } 
-    return (a)SYNTHETIC_LOCAL_VARIABLE_0;
+    return (SmartCardLogic)SYNTHETIC_LOCAL_VARIABLE_0;
   }
   
-  private static void init(a parama) {
+  private static void init(SmartCardLogic parama) {
     String str = System.getProperty("user.home") + File.separator + CONFIG_FILE;
     FileOutputStream fileOutputStream = null;
     try {
       Properties properties = new Properties();
       fileOutputStream = new FileOutputStream(str);
-      properties.setProperty("proxyType", String.valueOf(parama.a().a()));
+      properties.setProperty("proxyType", String.valueOf(parama.SmartCardLogic().a()));
       if (parama.b() != null)
         properties.setProperty("proxyHost", parama.b()); 
       if (parama.c() != null)

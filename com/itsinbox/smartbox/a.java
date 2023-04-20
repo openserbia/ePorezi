@@ -1,7 +1,7 @@
 package com.itsinbox.smartbox;
 
 public enum a {
-  a, b, c, d;
+  SmartCardLogic, b, c, d;
 }
 
 

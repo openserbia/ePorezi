@@ -30,7 +30,7 @@ import javax.naming.InvalidNameException;
 import javax.naming.ldap.LdapName;
 import javax.naming.ldap.Rdn;
 
-public class a {
+public class SmartCardLogic {
   private String a;
   
   private String b;
@@ -77,7 +77,7 @@ public class a {
                   String str2 = c(x509Certificate.getSubjectX500Principal().getName());
                   Date date = x509Certificate.getNotAfter();
                   arrayOfBoolean = arrayOfBoolean;
-                  paramList.add(new a(paramString, str2, str1, date, arrayOfBoolean));
+                  paramList.add(new SmartCardLogic(paramString, str2, str1, date, arrayOfBoolean));
                 } 
               } 
             } 
@@ -137,9 +137,9 @@ public class a {
     return bool;
   }
   
-  public a() {}
+  public SmartCardLogic() {}
   
-  private a(String paramString1, String paramString2, String paramString3, Date paramDate, boolean[] paramArrayOfboolean) {
+  private SmartCardLogic(String paramString1, String paramString2, String paramString3, Date paramDate, boolean[] paramArrayOfboolean) {
     this.a = paramString1;
     this.b = paramString2;
     this.c = paramString3;

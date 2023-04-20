@@ -1,6 +1,6 @@
 package com.itsinbox.smartbox.gui;
 
-import com.itsinbox.smartbox.a.a;
+import SmartCardLogic;
 import java.security.KeyStore;
 import java.util.HashMap;
 
@@ -12,7 +12,7 @@ final class g extends Thread {
     if ((keyStore = d.d(this.b).c()) != null) {
       d.e(this.b);
       if (d.a(this.b, this.a, keyStore)) {
-        a.b("IM SENDING: " + d.f(this.b));
+        SmartCardLogic.b("IM SENDING: " + d.f(this.b));
         HashMap<Object, Object> hashMap;
         (hashMap = new HashMap<>()).put("jmbg", d.g(this.b));
         hashMap.put("firstName", d.h(this.b));
@@ -24,18 +24,18 @@ final class g extends Thread {
           d.a(this.b, d.l(this.b)); 
         hashMap.put("loginKey", d.m(this.b));
         try {
-          a.a(this.a + "/sw4i/smartBoxLogin", hashMap);
+          SmartCardLogic.a(this.a + "/sw4i/smartBoxLogin", hashMap);
           if (d.k(this.b))
-            a.a(this.a + "/user/login2.html?loginKey=" + d.m(this.b)); 
+            SmartCardLogic.a(this.a + "/user/login2.html?loginKey=" + d.m(this.b));
           d.d(this.b).b();
           System.exit(0);
         } catch (Exception exception) {
-          a.b("Error in communication with the server while logging in: " + exception.getMessage());
+          SmartCardLogic.b("Error in communication with the server while logging in: " + exception.getMessage());
           d.n(this.b);
           d.o(this.b).setText("Грешка у комуникацији са сервером.");
         } 
       } else {
-        a.b("Error: Something wrong with the certificate!");
+        SmartCardLogic.b("Error: Something wrong with the certificate!");
       } 
     } 
     d.p(this.b);
